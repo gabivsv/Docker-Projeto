@@ -1,0 +1,520 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    background:radial-gradient(circle at top, #1b2a3a 0%, #0f1923 60%);
+    color:white;
+    min-height:100vh;
+}
+
+header{
+    padding:20px 8%;
+    border-bottom:1px solid #1b2a3a;
+}
+
+header h1 .icon{
+    text-shadow: none;
+    filter: none;
+}
+
+header h1{
+    color:#e69bfd;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow{
+    from{
+        text-shadow:
+            0 0 5px #c300ff,
+            0 0 10px #c300ff,
+            0 0 20px #c300ff;
+    }
+
+    to{
+        text-shadow:
+            0 0 10px #c300ff,
+            0 0 20px #c300ff,
+            0 0 40px #c300ff,
+            0 0 80px #c300ff;
+    }
+}
+
+.hero{
+    text-align:center;
+    padding:60px 20px;
+}
+
+.hero h2{
+    font-size:3rem;
+    margin-bottom:15px;
+}
+
+.hero p{
+    color:#b8b8b8;
+    font-size:1.1rem;
+}
+
+.games{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:30px;
+    padding:30px;
+}
+
+.game-card{
+    width:320px;
+    background:#1b2838;
+    border-radius:15px;
+    overflow:hidden;
+    text-decoration:none;
+    color:white;
+    transition:.3s;
+    box-shadow:0 5px 20px rgba(0,0,0,.3);
+}
+
+.game-card:hover{
+    transform:translateY(-10px) scale(1.03);
+    box-shadow:0 10px 30px rgba(102,192,244,.3);
+}
+
+.game-image{
+    height:180px;
+}
+
+.pacman{
+    background:linear-gradient(135deg,#000428,#004e92);
+}
+
+.arcade{
+    background:linear-gradient(135deg,#770101,#ff914d);
+}
+
+.tetris{
+    background:linear-gradient(135deg, #570227,#8338ec);
+}
+
+.game-info{
+    padding:20px;
+}
+
+.game-info h3{
+    margin-bottom:10px;
+    font-size:1.5rem;
+}
+
+.game-info p{
+    color:#c7d5e0;
+    margin-bottom:20px;
+}
+
+.game-info button{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:8px;
+    background:#c300ff;
+    color:#fff;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.game-info button:hover{
+    background:#ca37f7;
+}
+
+footer{
+    text-align:center;
+    padding:30px;
+    color:#888;
+}
+
+/*PAC MAN*/
+.loader-wrapper {
+    position: relative;
+    top: -120px;
+    left: 50px;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+  }
+
+.game-image{
+    height:180px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+
+  .loader-wrapper .packman::before {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 25px;
+    background-color: #EFF107;
+    border-radius: 100px 100px 0 0;
+    transform: translate(-50%, -50%);
+    animation: pac-top 0.5s linear infinite;
+    transform-origin: center bottom;
+  }
+  
+  .loader-wrapper .packman::after {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 25px;
+    background-color: #EFF107;
+    border-radius: 0 0 100px 100px;
+    transform: translate(-50%, 50%);
+    animation: pac-bot 0.5s linear infinite;
+    transform-origin: center top;
+  }
+  
+  @keyframes pac-top {
+    0% {
+      transform: translate(-50%, -50%) rotate(0)
+    }
+  
+    50% {
+      transform: translate(-50%, -50%) rotate(-30deg)
+    }
+  
+    100% {
+      transform: translate(-50%, -50%) rotate(0)
+    }
+  }
+  
+  @keyframes pac-bot {
+    0% {
+      transform: translate(-50%, 50%) rotate(0)
+    }
+  
+    50% {
+      transform: translate(-50%, 50%) rotate(30deg)
+    }
+  
+    100% {
+      transform: translate(-50%, 50%) rotate(0)
+    }
+  }
+  
+  .dots .dot {
+    position: absolute;
+    z-index: 1;
+    top: 8px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #fff;
+  }
+  
+  .dots .dot:nth-child(1) {
+    left: 90px;
+    animation: dot-stage1 0.5s infinite;
+  }
+  
+  .dots .dot:nth-child(2) {
+    left: 60px;
+    animation: dot-stage1 0.5s infinite;
+  }
+  
+  .dots .dot:nth-child(3) {
+    left: 30px;
+    animation: dot-stage1 0.5s infinite;
+  }
+  
+  .dots .dot:nth-child(4) {
+    left: 10px;
+    animation: dot-stage2 0.5s infinite;
+  }
+  
+  @keyframes dot-stage1 {
+    0% {
+      transform: translate(0, 0);
+    }
+  
+    100% {
+      transform: translate(-24px, 0);
+    }
+  }
+  
+  @keyframes dot-stage2 {
+    0% {
+      transform: scale(1);
+    }
+  
+    5%, 100% {
+      transform: scale(0);
+    }
+  }
+  
+/*SNAKE FRUIT*/
+.snake-wrapper{
+    position: relative;
+    width: 100%;
+    height: 100px;
+
+    top: -90px; 
+}
+
+.snake{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    animation: snakeMove 4s linear infinite;
+}
+
+.head{
+    width: 22px;
+    height: 22px;
+    background: #32cd32;
+    border-radius: 50%;
+    position: relative;
+}
+
+.eye{
+    width: 4px;
+    height: 4px;
+    background: black;
+    border-radius: 50%;
+
+    position: absolute;
+    top: 6px;
+    right: 4px;
+}
+
+.segment{
+    width: 18px;
+    height: 18px;
+    background: #3cff6a;
+    border-radius: 50%;
+    margin-left: 2px;
+}
+
+.fruit{
+    position: absolute;
+
+    right: 40px;
+    top: 25px;
+
+    width: 16px;
+    height: 16px;
+
+    background: red;
+    border-radius: 50%;
+}
+
+.fruit::before{
+    content: '';
+    position: absolute;
+
+    width: 3px;
+    height: 8px;
+
+    background: green;
+
+    left: 6px;
+    top: -5px;
+}
+
+.game-image{
+    height:180px;
+    position:relative;
+    overflow:hidden;
+}
+
+.snake-wrapper{
+    position:absolute;
+    top:50px;      
+    left:20px;
+}
+
+@keyframes snakeMove {
+    0%{
+        left: 10px;
+        top: 20px;
+    }
+
+    25%{
+        left: 80px;
+        top: 10px;
+    }
+
+    50%{
+        left: 150px;
+        top: 25px;
+    }
+
+    75%{
+        left: 220px;
+        top: 10px;
+    }
+
+    100%{
+        left: 280px;
+        top: 20px;
+    }
+}
+
+.segment{
+    animation: wiggle 0.5s infinite alternate;
+}
+
+@keyframes wiggle{
+    from{
+        transform: translateY(-2px);
+    }
+
+    to{
+        transform: translateY(2px);
+    }
+}
+
+.segment:nth-child(1){
+    animation-delay: 0s;
+}
+
+.segment:nth-child(2){
+    animation-delay: .1s;
+}
+
+.segment:nth-child(3){
+    animation-delay: .2s;
+}
+
+.segment:nth-child(4){
+    animation-delay: .3s;
+}
+
+/*TETRIS*/
+.tetris-wrapper{
+    position: absolute;
+    width: 100%;
+    height: 120px;
+    overflow: hidden;
+
+    top: 10px;
+}
+
+.square{
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border-radius: 3px;
+}
+
+.s1{
+    left: 80px;
+    background:#00e5ff;
+    animation: fall1 4s infinite;
+}
+
+.s2{
+    left: 80px;
+    background:#ffea00;
+    animation: fall2 4s infinite .5s;
+}
+
+.s3{
+    left: 98px;
+    background:#ff4081;
+    animation: fall3 4s infinite 1s;
+}
+
+.s4{
+    left: 98px;
+    background:#69f0ae;
+    animation: fall4 4s infinite 1.5s;
+}
+
+.s5{
+    left: 116px;
+    background:#ff9100;
+    animation: fall5 4s infinite 2s;
+}
+
+.s6{
+    left: 85px;
+    background:#9c27b0;
+    animation: fall6 4s infinite 2.5s;
+}
+
+.s7{
+    left: 107px;
+    background:#4caf50;
+    animation: fall7 4s infinite 3s;
+}
+
+.s8{
+    left: 129px;
+    background:#f44336;
+    animation: fall8 4s infinite 3.5s;
+}
+
+.s9{
+    left: 151px;
+    background:#03a9f4;
+    animation: fall9 4s infinite 4s;
+}
+
+.s10{
+    left: 173px;
+    background:#ffc107;
+    animation: fall10 4s infinite 4.5s;
+}
+
+@keyframes fall1{
+    0%{top:-20px;}
+    30%,100%{top:90px;}
+}
+
+@keyframes fall2{
+    0%{top:-20px;}
+    30%,100%{top:72px;}
+}
+
+@keyframes fall3{
+    0%{top:-20px;}
+    30%,100%{top:90px;}
+}
+
+@keyframes fall4{
+    0%{top:-20px;}
+    30%,100%{top:72px;}
+}
+
+@keyframes fall5{
+    0%{top:-20px;}
+    30%,100%{top:54px;}
+}
+
+@keyframes fall6{
+    0%{top:-22px;}
+    30%,100%{top:44px;}
+}
+
+@keyframes fall7{
+    0%{top:-22px;}
+    30%,100%{top:22px;}
+}
+
+@keyframes fall8{
+    0%{top:-22px;}
+    30%,100%{top:88px;}
+}
+
+@keyframes fall9{
+    0%{top:-22px;}
+    30%,100%{top:66px;}
+}
+
+@keyframes fall10{
+    0%{top:-22px;}
+    30%,100%{top:88px;}
+}
